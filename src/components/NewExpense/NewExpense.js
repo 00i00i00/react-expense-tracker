@@ -21,19 +21,13 @@ const NewExpense = (props) => {
     });
   };
 
-  if (formHidden) {
-    return (
-      <div className="new-expense">
-        <button onClick={formVisibilityHandler}>Add New Expense</button>
-      </div>
-    );
-  }
   return (
     <div className="new-expense">
-      <ExpenseForm
+      {formHidden && <button onClick={formVisibilityHandler}>Add New Expense</button>}
+      {!formHidden && <ExpenseForm
         onSaveExpenseData={saveExpenseDataHandler}
         onCancelClick={formVisibilityHandler}
-      />
+      />}
     </div>
   );
 };
